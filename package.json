@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "main": "node_modules/expo/AppEntry.js",
   "scripts": {
-    "build": "expo export --platform web --output-dir dist",
+    "build": "expo export --platform web --output-dir dist && node scripts/copy-icon-fonts.js",
     "start": "expo start",
     "android": "expo start --android",
     "ios": "expo start --ios",
