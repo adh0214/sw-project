@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="utf-8" />
+    <meta httpEquiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no, viewport-fit=cover" />
+    <title>STOCKMATE</title>
+    <link rel="icon" type="image/png" href="/favicon.png" />
+    <style id="expo-reset">
+      html, body {
+        height: 100%;
+        margin: 0;
+        padding: 0;
+        background-color: #0F172A;
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      }
+      body {
+        overflow: hidden;
+      }
+      #root {
+        display: flex;
+        height: 100%;
+        width: 100%;
+        flex: 1;
+        justify-content: center;
+        align-items: center;
+      }
+      #error-banner {
+        display: none;
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        background: #DC2626;
+        color: white;
+        padding: 16px;
+        z-index: 999999;
+        font-family: monospace;
+        font-size: 14px;
+        white-space: pre-wrap;
+        box-shadow: 0 4px 12px rgba(0,0,0,0.5);
+      }
+    </style>
+    <script>
+      // 브라우저 런타임 에러 화면 상단 즉시 노출
+      window.onerror = function(msg, url, line, col, error) {
+        var banner = document.getElementById('error-banner');
+        if (banner) {
+          banner.style.display = 'block';
+          banner.innerText = '⚠️ [자바스크립트 오류]\n' + msg + '\n위치: ' + url + ':' + line + ':' + col + '\n' + (error ? error.stack : '');
+        }
+      };
+      window.addEventListener('unhandledrejection', function(event) {
+        var banner = document.getElementById('error-banner');
+        if (banner) {
+          banner.style.display = 'block';
+          banner.innerText = '⚠️ [비동기 오류]\n' + (event.reason ? (event.reason.stack || event.reason) : event);
+        }
+      });
+    </script>
+  </head>
+  <body>
+    <div id="error-banner"></div>
+    <div id="root"></div>
+  </body>
+</html>
